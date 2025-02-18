@@ -1,0 +1,36 @@
+{
+  "name": "@bookthat-group/strapi-plugin-view-config",
+  "version": "0.0.1",
+  "description": "A Strapi plugin that manages and extends content manager view configurations through a configuration file.",
+  "main": "strapi-server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bookthat-group/strapi-plugin-view-config.git"
+  },
+  "keywords": [
+    "strapi",
+    "strapi-plugin",
+    "view-config",
+    "content-manager",
+    "configuration"
+  ],
+  "author": "BookThat Group",
+  "license": "MIT",
+  "dependencies": {
+    "strapi": "^4.0.0"
+  },
+  "bugs": {
+    "url": "https://github.com/bookthat-group/strapi-plugin-view-config/issues"
+  },
+  "homepage": "https://github.com/bookthat-group/strapi-plugin-view-config#readme",
+  "strapi": {
+    "name": "view-config",
+    "displayName": "View Config (Configuration File)",
+    "description": "Manage and extend content manager view settings, including descriptions and other configurations, using a configuration file located in the 'config/' folder.",
+    "required": false,
+    "kind": "plugin"
+  }
+}
