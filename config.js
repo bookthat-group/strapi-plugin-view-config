@@ -17,21 +17,6 @@ class Config {
       name: "content_manager_configuration",
     });
 
-    // TODO: get these types from strapi types.
-    const strapiMetadatasEdit = [
-      "label",
-      "description",
-      "placeholder",
-      "visible",
-      "editable",
-    ];
-    const strapiMetadatasList = [
-      "label",
-      "mainField",
-      "searchable",
-      "sortable",
-    ];
-
     if (!strapi.config["view-config"]) {
       // Strapi is now auto restarting... if not, schedule a 'kill'
       setTimeout(() => {
@@ -81,7 +66,6 @@ class Config {
 
           let updated = false;
 
-          // TODO: Add support for layouts and settings, convert to functions
           for (const [fieldName, fieldData] of Object.entries(fields)) {
             const existingField = existingConfig.metadatas?.[fieldName];
 
@@ -93,17 +77,14 @@ class Config {
               continue;
             }
 
-            // TODO: make functions
             for (const section of ["edit", "list"]) {
               if (fieldData[section]) {
-                const metadataList =
-                  section === "edit"
-                    ? strapiMetadatasEdit
-                    : strapiMetadatasList;
-
                 const validData = Object.entries(fieldData[section]).reduce(
                   (valid, [key, value]) => {
-                    if (!skipInvalidFields || metadataList.includes(key)) {
+                    if (
+                      !skipInvalidFields ||
+                      Object.hasOwn(existingField[section], key)
+                    ) {
                       valid[key] = value;
                     }
                     return valid;
