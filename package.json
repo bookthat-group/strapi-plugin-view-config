@@ -19,9 +19,7 @@
   ],
   "author": "BookThat Group",
   "license": "MIT",
-  "dependencies": {
-    "strapi": "^4.0.0"
-  },
+  "dependencies": {},
   "bugs": {
     "url": "https://github.com/bookthat-group/strapi-plugin-view-config/issues"
   },
