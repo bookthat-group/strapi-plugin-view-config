@@ -2,13 +2,15 @@
 
 ## Overview
 
+**Note:** This plugin overwrites user settings on each build. Any manual modifications in the Strapi admin panel will be reset when the application is restarted.
+
 `strapi-plugin-view-config` is a Strapi plugin designed to manage and extend content manager view configurations through a configuration file. This plugin allows developers to customize the view settings of their content types and components, enhancing the user experience in the Strapi admin panel.
 
 ## Features
 
 - **Dynamic Configuration**: Easily manage view settings for content types and components using a configuration file.
 - **Skip Invalid Fields**: Option to skip non-existing fields during configuration setup.
-- **Customizable Descriptions**: Add descriptions and other metadata to fields for better clarity in the admin interface.
+- **Customizable Descriptions**: Add descriptions and other metadata to views for better clarity in the admin interface.
 
 ## Installation
 
@@ -32,8 +34,11 @@ To install the `strapi-plugin-view-config`, follow these steps:
    ```javascript
    module.exports = {
      // other plugins
-     "strapi-plugin-view-config": {
+     "view-config": {
        enabled: true,
+       config: {
+         skipInvalidFields: false, // Disable import of non-valid fields (based on Strapi fields)
+       },
      },
    };
    ```
@@ -42,31 +47,52 @@ To install the `strapi-plugin-view-config`, follow these steps:
 
 ## Configuration
 
-The configuration file should export an object with the following structure:
+The configuration file should export an object with the following structure.
+
+**Note:** This file contains all possible options, but the plugin currently only supports `fields: edit & list`. Future updates will extend support for additional settings.
 
 ```javascript
 "use strict";
 
 module.exports = {
-  skipInvalidFields: true,
+  // Component views
   components: {},
+  // API views
   contentTypes: {
     "article.article": {
-      settings: {},
+      settings: {
+        // "bulkable": true,
+        // "filterable": true,
+        // "searchable": true,
+        // "pageSize": 10,
+        // "mainField": "name",
+        // "defaultSortBy": "name",
+        // "defaultSortOrder": "ASC"
+      },
       fields: {
         name: {
           edit: {
-            description: "The title of the article",
+            description: "The name of the article",
           },
-          list: {},
+          list: {
+            // label: "name",
+            // searchable: true,
+            // sortable: true,
+          },
         },
         price: {
-          description: "The price of the article",
+          edit: {
+            description: "The price of the article",
+          },
         },
       },
-      layouts: {},
+      layouts: {
+        // edit: [
+        //   { name: "name", size: 6 },
+        //   { name: "price", size: 4 },
+        // ],
+      },
     },
-    // Add more content types as needed
   },
 };
 ```
@@ -103,4 +129,4 @@ For any inquiries, please reach out to [development@bookthat.nl](mailto:developm
 
 ## WIP
 
-- Extend plugin to support more configurations (e.g., layout, settings).
+- Extend the plugin to support more configurations (e.g., layout, settings).

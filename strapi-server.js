@@ -1,19 +1,20 @@
-'use strict';
+"use strict";
 
-const Config = require('./config');
+const Config = require("./config");
 
 module.exports = {
   async bootstrap({ strapi }) {
-    strapi.log.info('Setting view config...');
-
     // Disable when dumping or restoring configuration, or executing any other command.
-    if (!['start', 'develop'].includes(process.argv?.[2])) {
+    if (!["start", "develop"].includes(process.argv?.[2])) {
+      strapi.log.info("⚙️ [view-config]: Skipping setup.");
       return;
     }
 
-    const config = new Config(strapi);
-    config.setup();
+    strapi.log.info("⚙️ [view-config]: Setting up config...");
 
-    strapi.log.info('Finished view config.');
-  }
+    const config = new Config(strapi);
+    await config.setup();
+
+    strapi.log.info("⚙️ [view-config]: Finished config.");
+  },
 };
