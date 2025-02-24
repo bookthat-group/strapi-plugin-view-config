@@ -2,6 +2,8 @@
 
 ## Overview
 
+[![NPM Version](https://img.shields.io/npm/v/@bookthat-group/strapi-plugin-view-config)](https://www.npmjs.com/package/@bookthat-group/strapi-plugin-view-config)
+
 **Note:** This plugin overwrites user settings on each build. Any manual modifications in the Strapi admin panel will be reset when the application is restarted.
 
 `strapi-plugin-view-config` is a Strapi plugin designed to manage and extend content manager view configurations through a configuration file. This plugin allows developers to customize the view settings of their content types and components, enhancing the user experience in the Strapi admin panel.
@@ -47,8 +49,7 @@ To install the `strapi-plugin-view-config`, follow these steps:
 
 ## Configuration
 
-The configuration file should export an object with the following structure.
-Check [strapi core](https://github.com/strapi/strapi/blob/fdac61dd05ca665168f51f655f1d165b55ec4231/packages/core/admin/admin/src/types/adminConfiguration.ts#L17)
+The configuration file should export an object that defines the structure of view settings. This follows Strapi’s core admin configuration. For reference, see the [Strapi core admin configuration](https://github.com/strapi/strapi/blob/fdac61dd05ca665168f51f655f1d165b55ec4231/packages/core/admin/admin/src/types/adminConfiguration.ts#L17).
 
 **Note:** This file contains all possible options, but the plugin currently only supports `fields: edit & list`. Future updates will extend support for additional settings.
 
