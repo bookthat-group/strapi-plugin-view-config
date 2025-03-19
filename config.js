@@ -13,8 +13,7 @@ class Config {
     }
 
     const pluginConfig = strapi.config.get("plugin.view-config");
-    const skipInvalidFields =
-      strapi.plugin("view-config").config("skipInvalidFields") ?? true;
+    const skipInvalidFields = pluginConfig?.skipInvalidFields ?? true;
     const tasks = [];
 
     if (!strapi.config["view-config"]) {
