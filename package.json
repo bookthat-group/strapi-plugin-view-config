@@ -1,6 +1,6 @@
 {
   "name": "@bookthat-group/strapi-plugin-view-config",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "A Strapi plugin that manages and extends content manager view configurations through a configuration file.",
   "main": "strapi-server.js",
   "scripts": {
